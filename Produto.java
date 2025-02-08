@@ -23,4 +23,7 @@ public class Produto {
         return preco;
     }
 
+    public String toString() {
+        return codigo + " - " + nome + ": R$" + preco;
+    }
 }

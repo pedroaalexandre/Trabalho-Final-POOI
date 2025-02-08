@@ -6,6 +6,9 @@ public class Pedido {
     private int numero;
     private List <Produto> produtos;
     
+    public Pedido() {
+    }
+
     //Contrutor da classe pedido
     public Pedido(int numero, Produto produtos) {
         this.numero = numero;
@@ -21,6 +24,11 @@ public class Pedido {
         return produtos;
     }
 
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    
     //Exibição terminal da classe pedido
     public void exibir() {
         System.out.println("Número do pedido: " + numero + "\n \nProdutos: " + produtos);

@@ -2,19 +2,19 @@ import java.util.List;
 
 public class Cliente {
 
-    private int codigo;
+    private String codigo;
     private String nome;
     private double desconto = 0.10;
     private Pedido pedido;
     private List <Produto> produtos;
 
-    public Cliente(int codigo, String nome, Pedido pedido) {
+    public Cliente(String codigo, String nome, Pedido pedido) {
         this.codigo = codigo;
         this.nome = nome;
         this.pedido = pedido;
     }
 
-    public Cliente(int codigo, String nome, double desconto, Pedido pedido) {       //Construtor sobrecarregado
+    public Cliente(String codigo, String nome, double desconto, Pedido pedido) {       //Construtor sobrecarregado
         this.codigo = codigo;
         this.nome = nome;
         this.desconto = desconto;
