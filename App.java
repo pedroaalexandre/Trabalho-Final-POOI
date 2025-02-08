@@ -8,8 +8,10 @@ public class App {
         String usuario = "usuario";
         String senha = "123";
         boolean entrada = false;
+        double desconto = 0.10;
         int opcao = 0;
 
+        Pedido pedido = new Pedido();
         ArrayList<Produto> produtos = new ArrayList<>();
         ArrayList<Produto> pedidoCliente = new ArrayList<>();
 
@@ -52,11 +54,13 @@ public class App {
             switch (opcao) {
                 // Opção de listagem dos produtos;
                 case 1:
+                    System.out.println();
                     for (Produto produto : produtos) {
                         System.out.println(produto.toString());
                     }
                     System.out.println();
                 break;
+
                 // Opção de fazer um novo pedido;
                 case 2:
                     System.out.println();
@@ -64,7 +68,10 @@ public class App {
                     int indice = s.nextInt();
                     char continuar;
                     
+                    pedido.setNumero(Utilitaria.gerarPedido());
+
                     pedidoCliente.add(produtos.get(indice - 1));
+                    pedido.setProdutos(pedidoCliente);
 
                     do {
                         System.out.println("Os itens do pedido são:");
@@ -73,23 +80,41 @@ public class App {
                         }
                         System.out.println("Deseja adionar mais? s / n");
                         continuar = s.next().charAt(0);
+
                         if (continuar == 's') {
                             indice = s.nextInt();
                             pedidoCliente.add(produtos.get(indice - 1));
+                            pedido.setProdutos(pedidoCliente);
                         }
+                        
                     } while (continuar == 's');
                 break;
+                
+                // Opção de informar ao usuário o total do pedido;
                 case 3:
                     menuCartao();
-                    int opcaoCartao = s.nextInt();
-                    
+                    int opcaoCartao = s.nextInt();                    
 
-                    // if(opcaoCartao == 1) {
-                    //     Cliente cliente = new Cliente(usuario, senha, pedidoCliente);
-                    // }
+                    if(opcaoCartao == 1) {
+                        String codigo = Utilitaria.gerarCodigo();
+                        Cliente cliente = new Cliente(codigo, usuario, desconto);
+                        cliente.setPedido(pedido);
+                        System.out.println(cliente.exibe(codigo, usuario, desconto));
+                        
+                    }else{
+                        String codigo = Utilitaria.gerarCodigo();
+                        Cliente cliente = new Cliente(codigo, usuario);
+                        cliente.setPedido(pedido);
+                        System.out.println(cliente.exibe(codigo, usuario));
+                    }
                 break;
-                default:
-                    break;
+
+                // Opção sair do programa;
+                case 4:
+                    System.out.println();
+                    System.out.println("Saindo...");
+                    System.exit(1);
+                break;
             }
             
         } while (opcao != 4);
@@ -99,21 +124,23 @@ public class App {
     public static void menuCartao() {
         Scanner s = new Scanner(System.in);
 
-        System.out.println("------ MENU CARTÃO------");
-        System.out.println("1. Sim");
-        System.out.println("2. Não");
-        System.out.println("Digite a opção desejada: ");        
+        System.out.println();
+        System.out.println(" -------- MENU CARTÃO -------");
+        System.out.println("| Possui o cartão da loja?   |");
+        System.out.println("| 1. Sim                     |");
+        System.out.println("| 2. Não                     |");
+        System.out.print("| Digite a opção desejada: ");
     }   
 
     public static void menuFuncoes() {
     Scanner s = new Scanner(System.in);
     
         System.out.println();
-        System.out.println("----------- MENU ----------");
-        System.out.println("| 1. Listar produtos      |");
-        System.out.println("| 2. Fazer pedido         |");
-        System.out.println("| 3. Total do pedido      |");
-        System.out.println("| 4. Sair                 |");
-        System.out.print("| Digite a opção desejada:   ");    
+        System.out.println("+------ MENU PRINCIPAL -----+");
+        System.out.println("| 1. Listar produtos        |");
+        System.out.println("| 2. Fazer pedido           |");
+        System.out.println("| 3. Total do pedido        |");
+        System.out.println("| 4. Sair                   |");
+        System.out.print("| Digite a opção desejada: ");    
     }
 }

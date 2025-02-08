@@ -20,18 +20,31 @@ public class Pedido {
         return numero;
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
-    }
-
     public void setNumero(int numero) {
         this.numero = numero;
     }
 
-    
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
     //Exibição terminal da classe pedido
     public void exibir() {
         System.out.println("Número do pedido: " + numero + "\n \nProdutos: " + produtos);
+    }
+
+    public double totalPedido(List <Produto> produtos) {
+        double soma = 0;
+
+        for(int i = 0; i < produtos.size(); i++) {
+            soma += produtos.get(i).getPreco();
+        }
+
+        return soma;
     }
 
 }
