@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class App {
@@ -74,6 +73,7 @@ public class App {
                     try {
                         pedidoCliente.add(produtos.get(indice - 1));
                         pedido.setProdutos(pedidoCliente);
+                        Pedido.qntdeProdutos++;
                     } catch (IndexOutOfBoundsException e) {
                         System.out.println("Erro: Código de produto inválido. Tente novamente.");
                         break;
@@ -89,8 +89,14 @@ public class App {
 
                         if (continuar == 's') {
                             indice = s.nextInt();
-                            pedidoCliente.add(produtos.get(indice - 1));
-                            pedido.setProdutos(pedidoCliente);
+                            try {
+                                pedidoCliente.add(produtos.get(indice - 1));
+                                pedido.setProdutos(pedidoCliente);
+                                Pedido.qntdeProdutos++;
+                            } catch (IndexOutOfBoundsException e) {
+                                System.out.println("Erro: Código de produto inválido. Tente novamente.");
+                                break;
+                            }
                         }
                             
                     } while (continuar == 's');
