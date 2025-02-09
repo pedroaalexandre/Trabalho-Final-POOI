@@ -5,6 +5,7 @@ public class Pedido {
     
     private int numero;
     private List <Produto> produtos;
+    public static int qntdeProdutos;
     
     public Pedido() {
     }
