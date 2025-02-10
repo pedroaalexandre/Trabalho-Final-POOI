@@ -55,6 +55,7 @@ public class App {
                 // Opção de listagem dos produtos;
                 case 1:
                     System.out.println();
+                    System.out.println("---- LISTA DE PRODUTOS ----");
                     for (Produto produto : produtos) {
                         System.out.println(produto.toString());
                     }
@@ -80,14 +81,17 @@ public class App {
                     }
 
                     do {
+                        System.out.println();
                         System.out.println("Os itens do pedido são:");
                         for (Produto produto : pedidoCliente) {
                             System.out.println(produto);
                         }
+                        System.out.println();
                         System.out.println("Deseja adionar mais? s / n");
                         continuar = s.next().charAt(0);
 
                         if (continuar == 's') {
+                            System.out.print("Código do produto: ");
                             indice = s.nextInt();
                             try {
                                 pedidoCliente.add(produtos.get(indice - 1));
@@ -107,6 +111,7 @@ public class App {
                     menuCartao();
                     int opcaoCartao = s.nextInt();                    
 
+                    System.out.println();
                     if(opcaoCartao == 1) {
                         String codigo = Utilitaria.gerarCodigo();
                         Cliente cliente = new Cliente(codigo, usuario, desconto);
@@ -137,7 +142,7 @@ public class App {
         Scanner s = new Scanner(System.in);
 
         System.out.println();
-        System.out.println(" -------- MENU CARTÃO -------");
+        System.out.println("+-------- MENU CARTÃO -------+");
         System.out.println("| Possui o cartão da loja?   |");
         System.out.println("| 1. Sim                     |");
         System.out.println("| 2. Não                     |");
@@ -147,12 +152,11 @@ public class App {
     public static void menuFuncoes() {
     Scanner s = new Scanner(System.in);
     
-        System.out.println();
-        System.out.println("+------ MENU PRINCIPAL -----+");
-        System.out.println("| 1. Listar produtos        |");
-        System.out.println("| 2. Fazer pedido           |");
-        System.out.println("| 3. Total do pedido        |");
-        System.out.println("| 4. Sair                   |");
+        System.out.println("+------ MENU PRINCIPAL ------+");
+        System.out.println("| 1. Listar produtos         |");
+        System.out.println("| 2. Fazer pedido            |");
+        System.out.println("| 3. Total do pedido         |");
+        System.out.println("| 4. Sair                    |");
         System.out.print("| Digite a opção desejada: ");    
     }
 }
