@@ -44,7 +44,7 @@ public class Cliente {
         return pedido;
     }
 
-    public void setPedido(Pedido pedido) {
+    public void setPedido(Pedido pedido) {  //Set pedido, para utilizar a classe Pedido por meio de cliente.
         this.pedido = pedido;
     }
     
