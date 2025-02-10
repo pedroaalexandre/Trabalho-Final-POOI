@@ -4,7 +4,7 @@ public class Utilitaria {
     
      public static final Random RANDOM = new Random();   
 
-     public static String gerarCodigo() {
+     public static String gerarCodigo() {               //Método para gerar o código do cliente
      String letras = "abcdefghijklmnopqrstuvwxyz";
      String numeros = "1234567890";
      StringBuilder codigo = new StringBuilder(2);
@@ -22,7 +22,7 @@ public class Utilitaria {
      return codigo.toString();
     }
 
-     public static int gerarPedido() {
+     public static int gerarPedido() {          //Método para gerar um número de pedido
         int pedido = RANDOM.nextInt(100);
         return pedido;
     }

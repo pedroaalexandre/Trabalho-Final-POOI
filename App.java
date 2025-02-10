@@ -5,15 +5,15 @@ public class App {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         
-        String usuario = "usuario";
-        String senha = "123";
+        String usuario = "usuario";     //Definição de um usuario default
+        String senha = "123";           //Definição de uma senha default
         boolean entrada = false;
-        double desconto = 0.10;
+        double desconto = 0.10;         //Definição do valor da variável desconto para utilizar no contrutor sobrecarregado
         int opcao;
 
         Pedido pedido = new Pedido();
         ArrayList<Produto> produtos = new ArrayList<>();
-        ArrayList<Produto> pedidoCliente = new ArrayList<>();
+        ArrayList<Produto> pedidoCliente = new ArrayList<>();       //Criação de uma lista para armazenar os produtos escolhido pelo cliente
 
         // Criação dos produtos;
         produtos.add(new Produto(1, "Arroz", 5.50));
@@ -32,6 +32,7 @@ public class App {
         produtos.add(new Produto(14, "Banana", 3.00));
         produtos.add(new Produto(15, "Laranja", 4.00));
 
+        //Menu e validação do usuário e senha
         do {
             System.out.print("Usuário: ");
             String user = s.next();
@@ -69,12 +70,15 @@ public class App {
                     int indice = s.nextInt();
                     char continuar;
                         
+                    //Chamada do método para gerar um número de pedido
                     pedido.setNumero(Utilitaria.gerarPedido());
 
+                    //try catch para capturar um erro caso um usuário digite um índice maior que o tamanho da lista
                     try {
                         pedidoCliente.add(produtos.get(indice - 1));
                         pedido.setProdutos(pedidoCliente);
-                        Pedido.qntdeProdutos++;
+                        Pedido.qntdeProdutos++;                        //Método estático para contar a quantidade de pedidos
+
                     } catch (IndexOutOfBoundsException e) {
                         System.out.println("Erro: Código de produto inválido. Tente novamente.");
                         break;
@@ -109,16 +113,15 @@ public class App {
                 // Opção de informar ao usuário o total do pedido;
                 case 3:
                     menuCartao();
-                    int opcaoCartao = s.nextInt();                    
+                    int opcaoCartao = s.nextInt();  //Usuário deve informar se possui o cartão
 
-                    System.out.println();
-                    if(opcaoCartao == 1) {
+                    if(opcaoCartao == 1) { //Caso tenha o cartão, instanciará a classe cliente que possui o atributo "desconto"
                         String codigo = Utilitaria.gerarCodigo();
                         Cliente cliente = new Cliente(codigo, usuario, desconto);
-                        cliente.setPedido(pedido);
+                        cliente.setPedido(pedido);      //Setando a classe pedido em cliente.
                         System.out.println(cliente.exibe(codigo, usuario, desconto));
                         
-                    }else{
+                    }else{          //Caso tenha o cartão, instanciará a classe cliente que não possui o atributo "desconto"
                         String codigo = Utilitaria.gerarCodigo();
                         Cliente cliente = new Cliente(codigo, usuario);
                         cliente.setPedido(pedido);
