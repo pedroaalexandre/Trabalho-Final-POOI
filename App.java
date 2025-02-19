@@ -56,6 +56,7 @@ public class App {
                 // Opção de listagem dos produtos;
                 case 1:
                     System.out.println();
+                    System.out.println("---- LISTA DE PRODUTOS ----");
                     for (Produto produto : produtos) {
                         System.out.println(produto.toString());
                     }
@@ -74,23 +75,27 @@ public class App {
 
                     //try catch para capturar um erro caso um usuário digite um índice maior que o tamanho da lista
                     try {
-                        pedidoCliente.add(produtos.get(indice - 1));    //Adicionar produto à lista do cliente
-                        pedido.setProdutos(pedidoCliente);              //Setar produtos à classe Pedido
-                        Pedido.qntdeProdutos++;                         //Método estático para contar a quantidade de pedidos
+                        pedidoCliente.add(produtos.get(indice - 1));
+                        pedido.setProdutos(pedidoCliente);
+                        Pedido.qntdeProdutos++;                        //Método estático para contar a quantidade de pedidos
+
                     } catch (IndexOutOfBoundsException e) {
                         System.out.println("Erro: Código de produto inválido. Tente novamente.");
                         break;
                     }
 
                     do {
-                        System.out.println("Os itens do pedido são:");     //Exibir os itens que estão na lista do cliente
+                        System.out.println();
+                        System.out.println("Os itens do pedido são:");
                         for (Produto produto : pedidoCliente) {
                             System.out.println(produto);
                         }
-                        System.out.println("Deseja adionar mais? s / n");   //Opção para adicionar mais produtos
+                        System.out.println();
+                        System.out.println("Deseja adionar mais? s / n");
                         continuar = s.next().charAt(0);
 
                         if (continuar == 's') {
+                            System.out.print("Código do produto: ");
                             indice = s.nextInt();
                             try {
                                 pedidoCliente.add(produtos.get(indice - 1));
@@ -116,7 +121,7 @@ public class App {
                     menuCartao();
                     int opcaoCartao = s.nextInt();  //Usuário deve informar se possui o cartão
 
-                    if(opcaoCartao == 1) {      //Caso tenha o cartão, instanciará a classe cliente que possui o atributo "desconto"
+                    if(opcaoCartao == 1) { //Caso tenha o cartão, instanciará a classe cliente que possui o atributo "desconto"
                         String codigo = Utilitaria.gerarCodigo();
                         Cliente cliente = new Cliente(codigo, usuario, desconto);
                         cliente.setPedido(pedido);      //Setando a classe pedido em cliente.
@@ -146,7 +151,7 @@ public class App {
         Scanner s = new Scanner(System.in);
 
         System.out.println();
-        System.out.println(" -------- MENU CARTÃO -------");
+        System.out.println("+-------- MENU CARTÃO -------+");
         System.out.println("| Possui o cartão da loja?   |");
         System.out.println("| 1. Sim                     |");
         System.out.println("| 2. Não                     |");
@@ -156,12 +161,11 @@ public class App {
     public static void menuFuncoes() {
     Scanner s = new Scanner(System.in);
     
-        System.out.println();
-        System.out.println("+------ MENU PRINCIPAL -----+");
-        System.out.println("| 1. Listar produtos        |");
-        System.out.println("| 2. Fazer pedido           |");
-        System.out.println("| 3. Total do pedido        |");
-        System.out.println("| 4. Sair                   |");
+        System.out.println("+------ MENU PRINCIPAL ------+");
+        System.out.println("| 1. Listar produtos         |");
+        System.out.println("| 2. Fazer pedido            |");
+        System.out.println("| 3. Total do pedido         |");
+        System.out.println("| 4. Sair                    |");
         System.out.print("| Digite a opção desejada: ");    
     }
 }
