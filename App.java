@@ -100,6 +100,12 @@ public class App {
                                 System.out.println("Erro: Código de produto inválido. Tente novamente.");
                                 break;
                             }
+                        }else if(continuar == 'n'){
+                            System.out.println("Pedido finalizado.");
+
+                        }else{
+                            System.out.println("Opção inválida.");
+                            
                         }
                             
                     } while (continuar == 's');

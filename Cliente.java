@@ -50,13 +50,13 @@ public class Cliente {
     
     public String exibe(String codigo, String nome) {
         double total = pedido.totalPedido(pedido.getProdutos());
-        return String.format("Código: %s - Nome: %s\nNúmero do pedido: %s\nLista de pedidos: %s\nQuantidade de itens: %s\nValor total: %.2f", codigo, nome, pedido.getNumero(), Pedido.qntdeProdutos, pedido.getProdutos(), total);
+        return String.format("\nCódigo: %s - Nome: %s\nNúmero do pedido: %s\nLista de pedidos: %s\nQuantidade de itens: %s\nValor total: %.2f", codigo, nome, pedido.getNumero(), Pedido.qntdeProdutos, pedido.getProdutos(), total);
     }
 
     public String exibe(String codigo, String nome, double desconto) {
         double total = pedido.totalPedido(pedido.getProdutos());
         double totalDesconto = pedido.totalPedido(pedido.getProdutos()) - (pedido.totalPedido(pedido.getProdutos()) * desconto);
-        return String.format("Código: %s - Nome: %s\nNúmero do pedido: %s\nQuantidade de itens: %s\nLista de pedidos: %s\nValor total: %.2f\nValor com desconto: %.2f\n", codigo, nome, pedido.getNumero(), Pedido.qntdeProdutos, pedido.getProdutos(), total,totalDesconto);
+        return String.format("\nCódigo: %s - Nome: %s\nNúmero do pedido: %s\nQuantidade de itens: %s\nLista de pedidos: %s\nValor total: %.2f\nValor com desconto: %.2f\n", codigo, nome, pedido.getNumero(), Pedido.qntdeProdutos, pedido.getProdutos(), total,totalDesconto);
     }
     
 }
